@@ -23,11 +23,33 @@ class Pokemon {
         this.ataque = ataque
         this.defensa = defensa
     }
+
+    atacar(pokemonB){
+        let ataque = Math.round(Math.random()*this.ataque);
+        let defensa = Math.round(Math.random()*pokemonB.defensa);
+
+        console.log(this.nombre + " ataca a " + pokemonB.nombre)
+        console.log(this.nombre + " ataca con " + ataque + " puntos de daño")
+        console.log(pokemonB.nombre + " consigue una defensa de " + defensa + " puntos")
+
+        if (ataque > defensa) {
+            let resultado = ataque - defensa
+
+            console.log(this.nombre + " asesta " + resultado + " puntos de daño")
+
+            pokemonB.vida = pokemonB.vida - resultado
+    
+            console.log("La salud de " + pokemonB.nombre + " es ahora de " + pokemonB.vida  + " puntos de vida")
+        } else {
+            console.log(this.nombre + " ha fallado el ataque!")
+            
+            console.log("La salud de " + pokemonB.nombre + " es ahora de " + pokemonB.vida  + " puntos de vida")
+        }
+    }
 }
 
 let bulbasaur = new Pokemon(1, "Bulbasaur", ['Grass', 'Poison'], 45, 49, 49)
 let squirtle = new Pokemon(1, "Squirtle", ['Water'], 44, 48, 65)
 
-// bulbasaur.atacar(squirtle)
-
-
+bulbasaur.atacar(squirtle)
+bulbasaur.atacar(squirtle)
